@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ittefaq Farms | Fresh White Layer Eggs - Rawalpindi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+body { font-family: 'Poppins', sans-serif; }
+
+/* Hero Background */
+.hero-bg {
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+                    url('https://69d3873004b4f2ffdfee856d.imgix.net/background/image.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.logo-img { height: 75px; }
+.farm-img { transition: transform 0.4s ease; }
+.farm-img:hover { transform: scale(1.05); }
+
+/* Mobile Menu Styles */
+#mobile-menu {
+  display: none;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Navbar -->
+<nav class="bg-zinc-50 shadow-md sticky top-0 z-50 border-b border-stone-200">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <img src="https://imgbob.net/ib/OZ2EBIASEasEOW8_1775339601.jpg" class="logo-img">
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-8 text-lg font-medium text-gray-800">
+        <a href="#home" class="hover:text-emerald-700 transition">Home</a>
+        <a href="#about" class="hover:text-emerald-700 transition">About</a>
+        <a href="#ethics" class="hover:text-emerald-700 transition">Our Ethics</a>
+        <a href="#products" class="hover:text-emerald-700 transition">Products</a>
+        <a href="#wholesale" class="hover:text-emerald-700 transition">Wholesale</a>
+        <a href="#contact" class="hover:text-emerald-700 transition">Contact</a>
+      </div>
+
+      <a href="https://wa.me/923335534588"
+         class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-3 rounded-full font-semibold transition">
+        WhatsApp
+      </a>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-btn" class="md:hidden text-3xl text-gray-800">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden mt-6 pb-4">
+      <div class="flex flex-col gap-5 text-lg font-medium text-gray-800">
+        <a href="#home" class="hover:text-emerald-700 transition">Home</a>
+        <a href="#about" class="hover:text-emerald-700 transition">About</a>
+        <a href="#ethics" class="hover:text-emerald-700 transition">Our Ethics</a>
+        <a href="#products" class="hover:text-emerald-700 transition">Products</a>
+        <a href="#wholesale" class="hover:text-emerald-700 transition">Wholesale</a>
+        <a href="#contact" class="hover:text-emerald-700 transition">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero-bg h-screen flex items-center text-white">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Fresh White Eggs from Healthy Chickens</h1>
+    <p class="text-lg md:text-xl max-w-3xl mx-auto">Clean, hygienic poultry farming in Rawalpindi delivering fresh eggs daily.</p>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h2 class="text-4xl font-bold mb-6">About Ittefaq Farms</h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Ittefaq Farms has been proudly operating in Rawalpindi, Pakistan for over 2 years. We specialize in high-quality white layer chicken farming and the production of fresh, farm-fresh eggs.
+        Our three modern poultry farms are located on Adyala Road, Rawalpindi. We maintain strict hygiene standards, use balanced feeding systems, and follow daily egg collection and health monitoring practices to ensure consistent quality and freshness.
+        At Ittefaq Farms, we are committed to ethical farming, animal welfare, and delivering nutritious white eggs to families and markets across Rawalpindi and beyond.
+      </p>
+    </div>
+    <img src="https://i.ibb.co/C3xB6zYN/about.jpg" class="farm-img rounded-3xl shadow-xl w-full">
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="py-20 bg-emerald-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-12">Our Farm & Happy Hens</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <img src="https://i.ibb.co/67f5GSfj/1.jpg" class="farm-img rounded-3xl h-80 w-full object-cover">
+      <img src="https://i.ibb.co/pvG6fwnp/2.jpg" class="farm-img rounded-3xl h-80 w-full object-cover">
+      <img src="https://i.ibb.co/8gzbBDLc/3.jpg" class="farm-img rounded-3xl h-80 w-full object-cover">
+    </div>
+  </div>
+</section>
+
+<!-- Ethics -->
+<section id="ethics" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-10">The Ethics of Stress-Free Farming</h2>
+    <div class="grid md:grid-cols-3 gap-8 text-left">
+      <div><i class="fa-solid fa-leaf text-3xl text-emerald-600"></i><h3 class="font-bold mt-3">Natural Feeding</h3><p>Balanced poultry feed ensures strong hens and better egg quality.</p></div>
+      <div><i class="fa-solid fa-shield text-3xl text-emerald-600"></i><h3 class="font-bold mt-3">Clean Environment</h3><p>Daily cleaning, proper ventilation, and disease control systems.</p></div>
+      <div><i class="fa-solid fa-heart text-3xl text-emerald-600"></i><h3 class="font-bold mt-3">Animal Welfare</h3><p>Stress-free hens produce healthier and more consistent eggs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section id="products" class="py-20 bg-emerald-50">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-4">Our Fresh Egg Packs</h2>
+    <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+      Fresh, clean, and nutritious white eggs from our own farms on Adyala Road, Rawalpindi.
+      Packed with care daily from healthy layer chickens.
+    </p>
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition-all duration-300">
+        <div class="text-6xl mb-6">🥚</div>
+        <h3 class="text-2xl font-bold mb-2">6 Eggs Pack</h3>
+        <p class="text-gray-600">Perfect for small families or daily breakfast use. Freshly collected and packed every morning.</p>
+      </div>
+      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition-all duration-300">
+        <div class="text-6xl mb-6">🥚</div>
+        <h3 class="text-2xl font-bold mb-2">12 Eggs Pack</h3>
+        <p class="text-gray-600">Our most popular household pack. Ideal for average Pakistani families with consistent quality and freshness.</p>
+      </div>
+      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition-all duration-300">
+        <div class="text-6xl mb-6">🥚</div>
+        <h3 class="text-2xl font-bold mb-2">24 Eggs Pack</h3>
+        <p class="text-gray-600">Family size pack – great value for larger households. Delivered fresh from our Ittefaq Farms.</p>
+      </div>
+      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition-all duration-300">
+        <div class="text-6xl mb-6">🥚</div>
+        <h3 class="text-2xl font-bold mb-2">30 Eggs Tray</h3>
+        <p class="text-gray-600">Full tray for bulk buyers, hotels, bakeries &amp; shops. Highest quality white eggs straight from the farm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wholesale, Contact, and Footer remain exactly as you provided -->
+<!-- (I kept them unchanged) -->
+
+<!-- Wholesale -->
+<section id="wholesale" class="py-20 bg-emerald-700 text-white">
+  <div class="max-w-6xl mx-auto text-center px-6">
+    <h2 class="text-4xl font-bold mb-6">Wholesale Supply</h2>
+    <p class="text-emerald-200 text-lg mb-10 max-w-3xl mx-auto">
+      We supply consistent, high-quality fresh white eggs to bakeries, restaurants, hotels,
+      grocery stores, and distributors across Rawalpindi and surrounding areas.
+      All eggs come directly from our own layer farms on Adyala Road.
+    </p>
+    <div class="max-w-2xl mx-auto">
+      <div class="bg-white/10 backdrop-blur-sm p-10 rounded-3xl">
+        <h3 class="text-2xl font-bold mb-8">Flexible Delivery Options</h3>
+        <div class="space-y-6 text-left">
+          <div class="flex items-start gap-4">
+            <span class="text-emerald-400 text-2xl mt-1">✅</span>
+            <div>
+              <p class="font-medium">We can arrange <strong>transportation & delivery</strong> upon request</p>
+              <p class="text-emerald-300 text-sm">(charges apply)</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-emerald-400 text-2xl mt-1">✅</span>
+            <div>
+              <p class="font-medium">You can also <strong>pick up eggs directly from our farm</strong></p>
+              <p class="text-emerald-300 text-sm">on Adyala Road, Rawalpindi</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-emerald-400 text-2xl mt-1">✅</span>
+            <div>
+              <p class="font-medium">Please <strong>contact us in advance</strong></p>
+              <p class="text-emerald-300 text-sm">to confirm availability and schedule</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="mt-12 text-emerald-200 text-sm tracking-wide">
+      Reliable daily supply • Strict hygiene standards • Farm fresh quality guaranteed
+    </p>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-20 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">Get In Touch With Us</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Order fresh white eggs directly from Ittefaq Farms.
+        Daily fresh stock • Reliable supply • Best quality guaranteed
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-2xl font-semibold mb-6">Ittefaq Farms</h3>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <span class="text-emerald-600 text-2xl">📍</span>
+              <div>
+                <p class="font-medium">Farm Location</p>
+                <p class="text-gray-600">
+                  Jabbar Miana Gidhpur,<br>
+                  Adyala Road, Rawalpindi, Pakistan
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="text-emerald-600 text-2xl">📞</span>
+              <div>
+                <p class="font-medium">Call / WhatsApp</p>
+                <a href="https://wa.me/923215284088" class="text-emerald-700 hover:text-emerald-800 font-semibold">
+                  +92 321 5284088
+                </a>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="text-emerald-600 text-2xl">🕒</span>
+              <div>
+                <p class="font-medium">Business Hours</p>
+                <p class="text-gray-600">Monday to Saturday: 8:00 AM - 6:00 PM</p>
+                <p class="text-gray-600">Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <a href="https://wa.me/923335534588"
+             class="inline-flex items-center gap-3 bg-emerald-700 hover:bg-emerald-800 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all">
+            <span>💬</span>
+            Order via WhatsApp Now
+          </a>
+        </div>
+      </div>
+      <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-lg">
+        <div class="p-6 border-b bg-white">
+          <h4 class="font-semibold text-lg">📍 Find Us on Map</h4>
+        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.123456789!2d73.123456!3d33.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDA3JzI0LjAiTiA3M8KwMDcnMjQuMCJF!5e0!3m2!1sen!2spk!4v1234567890"
+          width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <img src="https://imgbob.net/ib/OZ2EBIASEasEOW8_1775339601.jpg" alt="Ittefaq Farms Logo" class="logo-img h-16 mb-6">
+        <p class="text-gray-400 leading-relaxed">
+          Fresh, high-quality white eggs from our own poultry farms located on Adyala Road, Rawalpindi.
+          Committed to hygiene, quality, and customer satisfaction since 2024.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-5 text-white">Quick Links</h4>
+        <ul class="space-y-3 text-gray-400">
+          <li><a href="#products" class="hover:text-emerald-400 transition-colors">Our Egg Packs</a></li>
+          <li><a href="#wholesale" class="hover:text-emerald-400 transition-colors">Wholesale Supply</a></li>
+          <li><a href="#about" class="hover:text-emerald-400 transition-colors">About Us</a></li>
+          <li><a href="#contact" class="hover:text-emerald-400 transition-colors">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-5 text-white">Contact Information</h4>
+        <p class="text-gray-400 mb-2">
+          Jabbar Miana Gidhpur,<br>
+          Adyala Road, Rawalpindi, Pakistan
+        </p>
+        <p class="text-gray-400 mb-6">
+          <a href="https://wa.me/923001234567" class="hover:text-emerald-400 transition-colors">
+            +92 300 1234567
+          </a>
+        </p>
+        <h4 class="text-lg font-semibold mb-4 text-white">Follow Us</h4>
+        <div class="flex gap-4 justify-start">
+          <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 transition-colors rounded-full flex items-center justify-center text-xl opacity-60">📘</a>
+          <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 transition-colors rounded-full flex items-center justify-center text-xl opacity-60">📸</a>
+          <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 transition-colors rounded-full flex items-center justify-center text-xl opacity-60">𝕏</a>
+          <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 transition-colors rounded-full flex items-center justify-center text-2xl opacity-60">▶️</a>
+        </div>
+        <p class="text-xs text-gray-500 mt-3">Social Media Pages Coming Soon</p>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 mt-16 pt-8 text-center text-sm text-gray-500">
+      <p>© 2026 Ittefaq Farms - Jabbar Miana Gidhpur, Adyala Road, Rawalpindi, Pakistan. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile Menu Toggle
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuBtn.addEventListener('click', () => {
+  if (mobileMenu.style.display === "block") {
+    mobileMenu.style.display = "none";
+  } else {
+    mobileMenu.style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>
