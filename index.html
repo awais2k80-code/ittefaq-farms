@@ -926,6 +926,7 @@
   // =============================================
   if (email && email.includes("@")) {
     emailjs.send("service_8cjpain", "template_n685rtn", {
+      to_email: email,        // ← ADD THIS LINE
       customer_name: name,
       customer_phone: phone,
       customer_address: addr,
@@ -933,11 +934,12 @@
       total: subtotal
     }).then(function(response) {
       console.log("Email sent successfully!", response);
+      alert("Order confirmation sent to your email!");
     }).catch(function(error) {
       console.log("Email failed:", error);
+      alert("Email failed to send. You will still receive WhatsApp confirmation.");
     });
   }
-  
   // Clear cart and form
   cart = [];
   updateCartUI();
