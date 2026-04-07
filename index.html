@@ -14,6 +14,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+	
+	    <!--EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+	
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
       * {
@@ -113,10 +117,10 @@
         }
       }
     </style>
-	<link rel="icon" type="image/png" sizes="32x32" href="https://imgbob.net/ib/UskiWdAliIgoFNa_1775485582.jpeg">
-	<link rel="icon" type="image/png" sizes="16x16" href="https://imgbob.net/ib/UskiWdAliIgoFNa_1775485582.jpeg">
-	<link rel="apple-touch-icon" href="https://imgbob.net/ib/UskiWdAliIgoFNa_1775485582.jpeg">	
-	<link rel="shortcut icon" href="https://imgbob.net/ib/UskiWdAliIgoFNa_1775485582.jpeg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://imgbob.net/ib/UskiWdAliIgoFNa_1775485582.jpeg">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://imgbob.net/ib/UskiWdAliIgoFNa_1775485582.jpeg">
+    <link rel="apple-touch-icon" href="https://imgbob.net/ib/UskiWdAliIgoFNa_1775485582.jpeg">	
+    <link rel="shortcut icon" href="https://imgbob.net/ib/UskiWdAliIgoFNa_1775485582.jpeg">
   </head>
   <body class="bg-gray-50">
     <!-- Navbar - Mobile Friendly -->
@@ -802,6 +806,15 @@
               * Transportation charges added separately
             </p>
           </div>
+          
+          <!-- EMAIL FIELD ADDED HERE -->
+          <input
+            type="email"
+            id="customer-email"
+            placeholder="Your Email (optional - for order receipt)"
+            class="w-full border rounded-xl px-4 py-2.5 text-sm mb-2"
+          />
+          
           <input
             type="text"
             id="customer-name"
@@ -837,6 +850,10 @@
 
     <script>
       let cart = [];
+	  // Initialize EmailJS - REPLACE WITH YOUR ACTUAL KEY
+		(function() {
+			emailjs.init("vasKp9Kl2k2VO0XAg"); // Paste your Public Key here
+		})();
       function updateCartUI() {
         const count = cart.reduce((s, i) => s + i.quantity, 0);
         const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
@@ -871,35 +888,66 @@
         cart.splice(i, 1);
         updateCartUI();
       }
+      
+      // UPDATED placeOrder function with email field
       function placeOrder() {
-        let name = document.getElementById("customer-name")?.value.trim();
-        let phone = document.getElementById("customer-phone")?.value.trim();
-        let addr = document.getElementById("customer-address")?.value.trim();
-        if (!name || !phone || !addr) return alert("Please fill all fields");
-        if (
-          !addr.toLowerCase().includes("rawalpindi") &&
-          !addr.toLowerCase().includes("islamabad")
-        )
-          return alert("We only deliver to Rawalpindi & Islamabad");
-        if (cart.length === 0) return alert("Cart is empty");
-        let subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-        let msg =
-          `🥚 ROYAL YOLK JS FARMS - FARM FRESH ORDER 🥚\n\n👤 Customer: ${name}\n📞 Phone: ${phone}\n📍 Address: ${addr}\n\n📦 ORDER:\n` +
-          cart
-            .map(
-              (i) =>
-                `${i.name}: ${i.quantity} × ₨${i.price} = ₨${i.price * i.quantity}`,
-            )
-            .join("\n") +
-          `\n\n💰 Subtotal: ₨${subtotal}\n🚚 Transport: To be calculated\n💳 Payment: JazzCash/EasyPaisa after confirmation\n\n🐔 These are direct farm eggs — collected today, zero storage time!`;
-        window.open(
-          `https://wa.me/923005502633?text=${encodeURIComponent(msg)}`,
-          "_blank",
-        );
-        cart = [];
-        updateCartUI();
-        document.getElementById("cart-modal").classList.add("hidden");
-      }
+  let name = document.getElementById("customer-name")?.value.trim();
+  let phone = document.getElementById("customer-phone")?.value.trim();
+  let email = document.getElementById("customer-email")?.value.trim();
+  let addr = document.getElementById("customer-address")?.value.trim();
+  
+  if (!name || !phone || !addr) return alert("Please fill all fields");
+  if (!addr.toLowerCase().includes("rawalpindi") && !addr.toLowerCase().includes("islamabad"))
+    return alert("We only deliver to Rawalpindi & Islamabad");
+  if (cart.length === 0) return alert("Cart is empty");
+  
+  let subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+  
+  // Build order details string for email
+  let orderDetailsText = cart.map(i => `${i.name}: ${i.quantity} × ₨${i.price} = ₨${i.price * i.quantity}`).join("\n");
+  
+  // WhatsApp message
+  let msg = `🥚 ROYAL YOLK JS FARMS - FARM FRESH ORDER 🥚\n\n` +
+    `👤 Customer: ${name}\n` +
+    `📞 Phone: ${phone}\n` +
+    `📧 Email: ${email || "Not provided"}\n` +
+    `📍 Address: ${addr}\n\n` +
+    `📦 ORDER:\n${orderDetailsText}\n\n` +
+    `💰 Subtotal: ₨${subtotal}\n` +
+    `🚚 Transport: To be calculated\n` +
+    `💳 Payment: JazzCash/EasyPaisa after confirmation\n\n` +
+    `🐔 Direct farm eggs — collected today, zero storage time!`;
+  
+  window.open(`https://wa.me/923005502633?text=${encodeURIComponent(msg)}`, "_blank");
+  
+  // =============================================
+  // SEND EMAIL TO CUSTOMER (if email provided)
+  // REPLACE WITH YOUR SERVICE ID AND TEMPLATE ID
+  // =============================================
+  if (email && email.includes("@")) {
+    emailjs.send("service_8cjpain", "template_n685rtn", {
+      customer_name: name,
+      customer_phone: phone,
+      customer_address: addr,
+      order_details: orderDetailsText,
+      total: subtotal
+    }).then(function(response) {
+      console.log("Email sent successfully!", response);
+    }).catch(function(error) {
+      console.log("Email failed:", error);
+    });
+  }
+  
+  // Clear cart and form
+  cart = [];
+  updateCartUI();
+  document.getElementById("cart-modal").classList.add("hidden");
+  document.getElementById("customer-name").value = "";
+  document.getElementById("customer-phone").value = "";
+  document.getElementById("customer-email").value = "";
+  document.getElementById("customer-address").value = "";
+}
+      
       document.getElementById("cart-btn")?.addEventListener("click", () => {
         updateCartUI();
         document.getElementById("cart-modal").classList.remove("hidden");
