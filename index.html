@@ -971,10 +971,19 @@
             e.target === document.getElementById("cart-modal") &&
             document.getElementById("cart-modal").classList.add("hidden"),
         );
-      document.getElementById("menu-btn")?.addEventListener("click", () => {
-        let m = document.getElementById("mobile-menu");
-        m.style.display = m.style.display === "block" ? "none" : "block";
-      });
+     // Toggle hamburger menu
+		document.getElementById("menu-btn")?.addEventListener("click", () => {
+  		let m = document.getElementById("mobile-menu");
+  		m.style.display = m.style.display === "block" ? "none" : "block";
+		});
+
+	// Close hamburger menu automatically when clicking any menu link
+		const mobileLinks = document.querySelectorAll("#mobile-menu a");
+		mobileLinks.forEach(link => {
+  		link.addEventListener("click", () => {
+    	document.getElementById("mobile-menu").style.display = "none";
+  		});
+	});
     </script>
   </body>
 </html>
