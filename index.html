@@ -363,7 +363,7 @@
               ₨ 150
             </p>
             <button
-              onclick="addToCart(6, 180, '6 Eggs Pack')"
+              onclick="addToCart(6, 150, '6 Eggs Pack')"
               class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-full font-semibold w-full text-sm transition"
             >
               <i class="fa-solid fa-cart-plus mr-1"></i>Add to Cart
@@ -396,7 +396,7 @@
               ₨ 290
             </p>
             <button
-              onclick="addToCart(12, 340, '12 Eggs Pack')"
+              onclick="addToCart(12, 290, '12 Eggs Pack')"
               class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-full font-semibold w-full text-sm transition"
             >
               <i class="fa-solid fa-cart-plus mr-1"></i>Add to Cart
@@ -429,7 +429,7 @@
               ₨ 590
             </p>
             <button
-              onclick="addToCart(24, 650, '24 Eggs Pack')"
+              onclick="addToCart(24, 590, '24 Eggs Pack')"
               class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-full font-semibold w-full text-sm transition"
             >
               <i class="fa-solid fa-cart-plus mr-1"></i>Add to Cart
@@ -460,7 +460,7 @@
               ₨ 875
             </p>
             <button
-              onclick="addToCart(30, 800, '30 Eggs Tray')"
+              onclick="addToCart(30, 875, '30 Eggs Tray')"
               class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-full font-semibold w-full text-sm transition"
             >
               <i class="fa-solid fa-cart-plus mr-1"></i>Add to Cart
@@ -494,6 +494,10 @@
               </p>
             </div>
           </div>
+		  <!-- ✅ ADD THIS LINE RIGHT HERE -->
+		  <div class="bg-emerald-100 text-emerald-800 text-sm font-semibold text-center py-2 px-4 rounded-xl mb-4">
+				🚚 Free Delivery on orders above ₨1000
+		  </div>
           <div
             class="border-t border-gray-200 mt-5 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3"
           >
@@ -892,28 +896,53 @@
 			emailjs.init("vasKp9Kl2k2VO0XAg"); // Paste your Public Key here
 		})();
       function updateCartUI() {
-        const count = cart.reduce((s, i) => s + i.quantity, 0);
-        const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-        const badge = document.getElementById("cart-count");
-        if (badge) {
-          badge.innerText = count;
-          badge.classList.toggle("hidden", count === 0);
-        }
-        const container = document.getElementById("cart-items");
-        if (container) {
-          if (cart.length === 0)
-            container.innerHTML =
-              '<p class="text-gray-500 text-center py-5 text-sm">Cart is empty 🥚</p>';
-          else
-            container.innerHTML = cart
-              .map(
-                (item, idx) =>
-                  `<div class="flex justify-between items-center border-b pb-2"><div><span class="font-semibold text-sm">${item.name}</span><br><span class="text-xs text-gray-500">₨${item.price} x ${item.quantity}</span></div><div class="flex items-center gap-2"><span class="font-bold text-sm">₨${item.price * item.quantity}</span><button onclick="removeFromCart(${idx})" class="text-red-500 text-sm"><i class="fa-solid fa-trash-can"></i></button></div></div>`,
-              )
-              .join("");
-          document.getElementById("cart-total").innerText = `₨ ${total}`;
-        }
-      }
+  const count = cart.reduce((s, i) => s + i.quantity, 0);
+  const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+
+  const badge = document.getElementById("cart-count");
+  if (badge) {
+    badge.innerText = count;
+    badge.classList.toggle("hidden", count === 0);
+  }
+
+  const container = document.getElementById("cart-items");
+
+  if (container) {
+    if (cart.length === 0) {
+      container.innerHTML =
+        '<p class="text-gray-500 text-center py-5 text-sm">Cart is empty 🥚</p>';
+    } else {
+      container.innerHTML = cart
+        .map(
+          (item, idx) => `
+        <div class="flex justify-between items-center border-b pb-3">
+          
+          <div class="flex-1">
+            <span class="font-semibold text-sm">${item.name}</span>
+            <p class="text-xs text-gray-500">
+              ₨${item.price} × ${item.quantity} = ₨${item.price * item.quantity}
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="decreaseQty(${idx})" class="px-2 bg-gray-200 rounded">-</button>
+            <span class="font-bold text-sm">${item.quantity}</span>
+            <button onclick="increaseQty(${idx})" class="px-2 bg-gray-200 rounded">+</button>
+
+            <button onclick="removeFromCart(${idx})" class="text-red-500 ml-2">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+
+        </div>
+      `,
+        )
+        .join("");
+    }
+
+    document.getElementById("cart-total").innerText = `₨ ${total}`;
+  }
+}
       function addToCart(eggs, price, name) {
         let existing = cart.find((i) => i.name === name);
         existing
@@ -939,6 +968,8 @@
   if (cart.length === 0) return alert("Cart is empty");
   
   let subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+  let delivery = subtotal >= 1000 ? 0 : 200;
+  let finalTotal = subtotal + delivery;
   
   // Build order details string for email
   let orderDetailsText = cart.map(i => `${i.name}: ${i.quantity} × ₨${i.price} = ₨${i.price * i.quantity}`).join("\n");
@@ -951,7 +982,8 @@
     `📍 Address: ${addr}\n\n` +
     `📦 ORDER:\n${orderDetailsText}\n\n` +
     `💰 Subtotal: ₨${subtotal}\n` +
-    `🚚 Transport: 200\n` +
+    `🚚 Transport: ₨${delivery}${delivery === 0 ? " (FREE)" : ""}\n` +
+	`🧾 Total: ₨${finalTotal}\n\n` +
     `💳 Payment: JazzCash/EasyPaisa after confirmation\n\n` +
     `🐔 Direct farm eggs — collected today, zero storage time!`;
   
@@ -974,7 +1006,8 @@
       alert("Order confirmation sent to your email!");
     }).catch(function(error) {
       console.log("Email failed:", error);
-      alert("Email failed to send. You will still receive WhatsApp confirmation.");
+	  
+      <!--alert("Email failed to send. You will still receive WhatsApp confirmation.");-->
     });
   }
   // Clear cart and form
@@ -1021,6 +1054,22 @@
     	document.getElementById("mobile-menu").style.display = "none";
   		});
 	});
+	
+	function increaseQty(index) {
+  cart[index].quantity++;
+  updateCartUI();
+}
+
+function decreaseQty(index) {
+  cart[index].quantity--;
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+
+  updateCartUI();
+}
+	
     </script>
   </body>
 </html> 
